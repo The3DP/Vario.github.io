@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LoftCODE Program</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+    #output {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Welcome to the LoftCODE Program!</h1>
+<p>You can click "Exit" to exit the program or "Continue" to proceed.</p>
+
+<button onclick="handleUserChoice(0)">Continue</button>
+<button onclick="handleUserChoice(1)">Exit</button>
+
+<div id="output"></div>
+
+<script>
+  function handleUserChoice(choice) {
+    const output = document.getElementById('output');
+    if (choice === 1) {
+      logAction(1);
+      output.textContent = "You chose to exit the program.\nGoodbye!";
+    } else {
+      logAction(0);
+      output.textContent = "You chose to continue.\nStarting a new task...";
+      showTaskMenu();
+    }
+  }
+
+  function showTaskMenu() {
+    const output = document.getElementById('output');
+    output.innerHTML += `
+      <p>Select a task to perform:</p>
+      <button onclick="showCurrentTime()">1. Show current time</button>
+      <button onclick="showSystemInfo()">2. Display system information</button>
+      <button onclick="output.textContent = 'Returning to main menu...';">3. Exit to main menu</button>
+    `;
+  }
+
+  function showCurrentTime() {
+    const now = new Date();
+    const output = document.getElementById('output');
+    output.textContent += `\nCurrent Date and Time: ${now.toLocaleString()}`;
+  }
+
+  function showSystemInfo() {
+    const output = document.getElementById('output');
+    output.textContent += `
+\nSystem Information:
+Operating System: ${navigator.platform}
+User Agent: ${navigator.userAgent}
+    `;
+  }
+
+  function logAction(actionCode) {
+    const timestamp = new Date().toLocaleString();
+    console.log(`Log: ${actionCode === 1 ? "Exit" : "Continue"} at ${timestamp}`);
+    // In a real app, this would send the data to a backend or save it in localStorage
+  }
+</script>
+
+</body>
+</html>
