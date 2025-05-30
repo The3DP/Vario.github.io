@@ -11,4 +11,3 @@ d73928430@gmail.com
 >RTS (Recommended Testing Sites)
 ##
 This is testable in Terminal for Mac/Windows/Raspberry Pi.
-##
